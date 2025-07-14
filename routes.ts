@@ -3,6 +3,20 @@ import { Login } from './src/app/page/login/login';
 
 export const routes: Routes = [
   {
+    path: 'reactive-form',
+    loadComponent: () =>
+      import('./src/app/page/reactive-form-login/reactive-form-login').then(
+        (m) => m.ReactiveFormLogin
+      ),
+  },
+  {
+    path : 'dashboard',
+    loadComponent: () =>
+      import('./src/app/page/dashboard/dashboard').then(
+        (m) => m.Dashboard
+      ),
+  },
+  {
     path: 'login',
     component: Login,
   },
@@ -12,7 +26,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
   },
 ];

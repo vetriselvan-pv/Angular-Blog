@@ -1,34 +1,34 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  selector: 'app-reactive-form-login',
+  imports: [ReactiveFormsModule],
   template: `
     <div class="main-wrapper">
     <div class="form-container">
          <div class="logo-container">
         Login
       </div>
-       <form [formGroup]="formGroup" (ngSubmit)="submit()" class="form">
+       <form [formGroup]="loginForm" (ngSubmit)="submit()" class="form">
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text"  formControlName="username" placeholder="Enter your username"  >
+          @if(loginForm.get('username')?.touched && loginForm.get('username')?.errors?.['required']) {
+            <span class="error-message">Username is required</span>
+          }
         </div>
          <div class="form-group">
           <label for="password">Password</label>
           <input type="text" formControlName="password" placeholder="Enter your password"  >
+          @if(loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']) {
+            <span class="error-message">Password is required</span>
+          }
         </div>
-
-        <button class="form-submit-btn" type="submit">Submit</button>
+        <div class="flex-row">
+          <button class="form-submit-btn" type="reset">Reset</button>
+          <button class="form-submit-btn" type="submit">Submit</button>
+        </div>
       </form> 
        
     </div>
@@ -49,7 +49,8 @@ import {
   justify-content: center;
   width: 100dvw;
   height: 100dvh;
-  background-color: #e9f5be;
+  background: #EEAECA;
+background: radial-gradient(circle,rgba(238, 174, 202, 0.96) 0%, rgba(148, 187, 233, 1) 100%);
   .form-container {
     width: 500px;
     background-color: #fff;
@@ -149,30 +150,44 @@ import {
   .form-container .link:hover {
     text-decoration: underline;
   }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  .flex-row {
+    display: flex;
+    gap: 10px;
+  }
 }
 
-  `,
+  `
 })
-export class Login {
-  private formBuilder: FormBuilder = inject(FormBuilder);
-  private router = inject(Router);
+export class ReactiveFormLogin implements OnInit {
 
-  formGroup: FormGroup = this.formBuilder.nonNullable.group({
+  private formBuilder: FormBuilder = inject(FormBuilder);
+
+  loginForm = this.formBuilder.nonNullable.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
 
-  submit() {
-    const payload = {
-      password: this.formGroup.get('password')?.value,
-      username: this.formGroup.get('username')?.value,
-    };
-    console.log(payload);
-    if (payload.username === 'admin' && payload.password === 'admin') {
-      localStorage.setItem('role', 'admin');
-    } else {
-      localStorage.setItem('role', 'user');
-    }
-    this.router.navigate(['/roles']);
+  ngOnInit() {
+    console.log('Login Form Status',this.loginForm.status);
+    console.log('Login Form Value',this.loginForm.value);
+    console.log('Login Form Valid',this.loginForm.valid);
+    console.log('Login Form Invalid',this.loginForm.invalid);
+    console.log('Login Form Pristine',this.loginForm.pristine);
+    console.log('Login Form Dirty',this.loginForm.dirty);
+    console.log('Login Form Touched',this.loginForm.touched);
+    console.log('Login Form Untouched',this.loginForm.untouched);
   }
+
+  submit() {
+    console.log(this.loginForm.value);
+    // handle the form submission here.
+  }
+  
 }

@@ -51,9 +51,13 @@
       },
       "prefix": "app",
       "projectType": "application",
-      "root": "",
-      "schematics": {},
-      "sourceRoot": "src"
+      "root": "", 
+      "sourceRoot": "src",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "version": 1
