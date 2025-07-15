@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { Login } from './src/app/page/login/login';
+import { routerDeactivateGuard } from './src/app/guard/router-deactivate/router-deactivate-guard';
 
 export const routes: Routes = [
   {
@@ -8,6 +9,7 @@ export const routes: Routes = [
       import('./src/app/page/reactive-form-login/reactive-form-login').then(
         (m) => m.ReactiveFormLogin
       ),
+    canDeactivate: [routerDeactivateGuard],
   },
   {
     path : 'dashboard',
@@ -23,6 +25,14 @@ export const routes: Routes = [
   {
     path: 'roles',
     loadChildren: () => ROLES_ROUTES,
+  },  
+  {
+    path: 'registration',
+    loadComponent : () =>
+      import('./src/app/page/registration/registration').then(
+        (m) => m.Registration
+      ),
+      canDeactivate: [routerDeactivateGuard],
   },
   {
     path: '',

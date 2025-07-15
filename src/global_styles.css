@@ -1,1 +1,8 @@
 /* Add application styles & imports to this file! */
+
+html, body { height: 100%; }
+body { margin: 0; font-family:   "Helvetica Neue"; }
+
+* {
+    box-sizing: border-box;
+}
