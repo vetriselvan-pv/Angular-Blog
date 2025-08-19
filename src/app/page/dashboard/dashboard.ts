@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { formatCurrency } from '@angular/common'
 
 @Component({
   selector: "app-dashboard",

@@ -3,11 +3,69 @@
   <head>
     <title>My app</title>
     <meta charset="UTF-8" />
-    <base href="/">
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
+    <base href="/" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      #startup-loader {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #e0f7fa, #80deea);
+        font-family: Arial, sans-serif;
+        color: #004d40;
+        animation: fadeIn 0.8s ease-in-out;
+      }
+
+      /* Spinner animation */
+      .spinner {
+        border: 6px solid rgba(0, 0, 0, 0.1);
+        border-top: 6px solid #00695c;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 15px;
+      }
+
+      /* Text style */
+      #startup-loader p {
+        font-size: 1.1rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+
+      /* Animations */
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
   <body>
-    <app-root>Loading...</app-root>
+    <app-root>
+      <div id="startup-loader">
+        <div class="spinner"></div>
+        <p>Application is getting initializing...</p>
+      </div>
+    </app-root>
   </body>
 </html>

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Login } from './src/app/page/login/login';
 import { routerDeactivateGuard } from './src/app/guard/router-deactivate/router-deactivate-guard';
+import { Renderer } from './src/app/page/renderer/renderer';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,15 @@ export const routes: Routes = [
     component: Login,
   },
   {
+    path: 'admin',
+    loadComponent: () =>
+      import('./src/app/page/admin/admin').then((m) => m.Admin),
+  },
+  {
+    path: 'renderer',
+    component: Renderer,
+  },
+  {
     path: 'roles',
     loadChildren: () => ROLES_ROUTES,
   },  
@@ -35,8 +45,13 @@ export const routes: Routes = [
       canDeactivate: [routerDeactivateGuard],
   },
   {
+    path: 'home',
+    loadComponent: () =>
+      import('./src/app/page/home/home').then((m) => m.Home),
+  },
+  {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/home',
     pathMatch: 'full',
   },
 ];
