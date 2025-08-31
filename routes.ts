@@ -50,6 +50,15 @@ export const routes: Routes = [
       import('./src/app/page/home/home').then((m) => m.Home),
   },
   {
+    path: 'operator',
+    loadComponent: () =>
+      import('./src/app/page/operator/operator').then((m) => m.Operator),
+  }, 
+  {
+    path: 'template-literals',
+    loadComponent: () => import('./src/app/page/template-literals/template-literals').then((m) => m.TemplateLiterals),
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full',

@@ -1,0 +1,98 @@
+<div class="page-container">
+  <!-- Template Literals Card -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Template Literals in Angular</h2>
+    </div>
+    <div class="card-body">
+      <div class="example-section">
+        <h3 class="example-title">
+          Basic Template Literals with class binding and interpolation
+        </h3>
+        <div class="code-example">
+          <p [class]="`greet-${cssclass}`">{{ `welcome to ${greeting}` }}</p>
+        </div>
+      </div>
+      <div class="example-section">
+        <h3 class="example-title">With Pipe Transformation</h3>
+        <div class="code-example">
+          <p>{{ `welcome to ${greeting | titlecase} ` }}</p>
+        </div>
+      </div>
+      <div class="example-section">
+        <h3 class="example-title">With @ let directive</h3>
+        @let author = 'Vetri';
+        <div class="code-example">
+          <p>{{ `Hello ${author} ` }}</p>
+        </div>
+      </div>
+      <div class="example-section">
+        <h3 class="example-title">With @ if directive</h3>
+        @if ( author === `Vetri` ){
+        <div class="code-example">
+          <p>{{ `Welcome back ${author}` }}</p>
+        </div>
+        } @else {
+        <div class="code-example">
+          <p>{{ `Hello Guest` }}</p>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Tagged Template Literals Section -->
+  <div class="section-header">
+    <h2 class="section-title">Tagged Template Literals in Angular</h2>
+  </div>
+
+  <h3 class="example-title">Tagged Template Literals in innerHTML</h3>
+  <div class="cards-grid">
+    @for (item of quote; track $index) {
+    <div class="quote-card">
+      <div
+        class="quote-content"
+        [innerHTML]="quotes`Author: ${item.author} Quote: ${item.quote}`"
+      ></div>
+    </div>
+    }
+  </div>
+
+  <h3 class="example-title">
+    Tagged Template Literals in string interpolation
+  </h3>
+  <div class="quote-card">
+    <p>{{ greet`template literals ${name}` }}</p>
+  </div>
+
+  <h3 class="example-title">Tagged Template Literals with pipe</h3>
+  <div class="quote-card">
+    <p>{{ greet`welcome to ${name | uppercase} ` }}</p>
+  </div>
+
+  <h3 class="example-title">
+    Tagged Template Literals with functions and method
+  </h3>
+  <div class="quote-card">
+    <p [innerHTML]="messageContent`Quote: ${getQuote()}`"></p>
+  </div>
+
+  <h3 class="example-title">
+    Tagged Template Literals with multiple functions and method
+  </h3>
+  <div class="quote-card">
+    <p [innerHTML]="quotes`Author: ${getAuthor()} Quote: ${getQuote()}`"></p>
+  </div>
+
+  <h3 class="example-title">Nested Tagged Template Literals</h3>
+  <div class="quote-card">
+    <p
+      [innerHTML]="quotes`Author: ${getAuthor()} Quote: ${messageContent`Quote: ${getQuote()}`}`"
+    ></p>
+  </div>
+
+  <h3 class="example-title">Tagged Template Literals in ts </h3>
+  <div class="quote-card">
+    <p>{{ welcomeMessage }}</p>
+  </div>
+</div>

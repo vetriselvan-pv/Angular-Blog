@@ -1,12 +1,14 @@
 import {
   ApplicationConfig,
   Component,
+  effect,
   inject,
   provideAppInitializer,
   provideZonelessChangeDetection,
 } from "@angular/core";
 import { bootstrapApplication } from "@angular/platform-browser";
 import {
+  Router,
   RouterModule,
   provideRouter,
   withHashLocation,
@@ -45,6 +47,12 @@ export const appConfig: ApplicationConfig = {
 })
 export class App {
   name = "Angular";
+  private router = inject(Router);
+  constructor() {
+    effect(() => {
+      console.log('Current Navigation : ',this.router.currentNavigation());
+    });  
+  }
 }
 
 bootstrapApplication(App, appConfig);
