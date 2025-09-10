@@ -10,7 +10,7 @@ export const routerDeactivateGuard: CanDeactivateFn<unknown> = (
   currentState : RouterStateSnapshot,
   nextState: RouterStateSnapshot
 ) => {
-  if(component && (component as any).hasUserChanges()){
+  if(component && (component as any)?.hasUserChanges?.()){
     const matDialog : MatDialog = inject(MatDialog);
     const dialogRef = matDialog.open(ConfirmPopup, {
       data: {

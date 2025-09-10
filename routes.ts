@@ -59,6 +59,18 @@ export const routes: Routes = [
     loadComponent: () => import('./src/app/page/template-literals/template-literals').then((m) => m.TemplateLiterals),
   },
   {
+    path: 'animation',
+    loadComponent: () => import('./src/app/page/animation/animation').then((m) => m.Animation),
+  },
+  {
+    path: 'route-animation',
+    loadComponent: () => import('./src/app/page/route-animation/route-animation').then((m) => m.RouteAnimation),
+  },
+  {
+    path: 'common-form',
+    loadComponent : () => import('./src/app/page/common-form/common-form').then((m) => m.CommonForm)
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full',

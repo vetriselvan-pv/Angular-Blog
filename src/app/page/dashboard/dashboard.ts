@@ -1,13 +1,14 @@
-import { Component } from "@angular/core";
-import { formatCurrency } from '@angular/common'
+import {
+  Component, 
+} from "@angular/core"; 
 
 @Component({
   selector: "app-dashboard",
   imports: [],
   template: `
     <div class="card-list">
-      @for (card of cards; track card.title) {
-      <div class="card">
+      @for (card of cards; track card.title; let i = $index) {
+      <div [animate.enter]="'card-fade-in-up'" [style.--i]="i" class="dashboard-card list-item">
         <img [src]="card.image" alt="Card image" class="card-image" />
         <div class="card-content">
           <h3>{{ card.title }}</h3>
@@ -24,10 +25,10 @@ import { formatCurrency } from '@angular/common'
   gap: 16px;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 24px;
+  padding: 24px; 
 }
 
-.card {
+.dashboard-card {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -70,6 +71,7 @@ import { formatCurrency } from '@angular/common'
 export class Dashboard {
   cards = [
     {
+      id: 1,
       title:
         "Mastering Angular Pipes: Create Custom Pipes with @Pipe Decorator",
       description:
@@ -78,6 +80,7 @@ export class Dashboard {
       image: "./blog-image/Pipe Decorator.png",
     },
     {
+      id: 2,
       title:
         "Getting Started with Gemini CLI: Use Google Gemini Right from Your Terminal",
       description:
@@ -86,6 +89,7 @@ export class Dashboard {
       image: "./blog-image/Gemini CLI.png",
     },
     {
+      id: 3,
       title:
         "JavaScript Obfuscator — How to Obfuscate JavaScript in Angular for Better Frontend Security",
       description:
@@ -94,6 +98,7 @@ export class Dashboard {
       image: "./blog-image/JS Obfuscator.png",
     },
     {
+      id: 4,
       title: "Understanding Void Subject in RxJS",
       description:
         "Learn how to use Subject<void> in RxJS to emit events without passing values. This guide covers Angular examples, common use cases.",
@@ -101,6 +106,7 @@ export class Dashboard {
       image: "./blog-image/Void Subject.png",
     },
     {
+      id: 5,
       title: "Mastering AsyncSubject in RxJS: How to Emit the Final Value",
       description:
         "Discover how AsyncSubject in RxJS works, why it’s different from other Subjects, and when to use it. Learn through real Angular examples.",
@@ -108,6 +114,7 @@ export class Dashboard {
       image: "./blog-image/Async Subject.png",
     },
     {
+      id: 6,
       title:
         "Exploring ReplaySubject in RxJS: How to Replay Past Values in Angular",
       description:
@@ -116,6 +123,7 @@ export class Dashboard {
       image: "./blog-image/Reply Subject.png",
     },
     {
+      id: 7,
       title: "RxJS : Understanding BehaviorSubject in Angular",
       description:
         "Learn how BehaviorSubject works under the hood and how to use it effectively in real-world Angular applications.",
@@ -123,6 +131,7 @@ export class Dashboard {
       image: "./blog-image/behaviour subject.png",
     },
     {
+      id: 8,
       title: "Exploring RxJS: Diving into Subjects with Interactive Demo",
       description:
         "Understanding RxJS Subjects: Multicasting, Observers, and Real-Time Angular Demos",
@@ -130,6 +139,7 @@ export class Dashboard {
       image: "./blog-image/rxjs_subject.png",
     },
     {
+      id: 9,
       title:
         "Understanding @let in Angular Template Syntax: A Powerful Tool for Local Variables",
       description:

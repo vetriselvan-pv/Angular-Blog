@@ -46,10 +46,11 @@ import {
 .main-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100dvw;
-  height: 100dvh;
+  justify-content: center; 
   background-color: #e9f5be;
+  width: 100%;
+  height: calc(100dvh - 9rem);
+  view-transition-name: login;
   .form-container {
     width: 500px;
     background-color: #fff;

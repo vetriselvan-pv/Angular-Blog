@@ -26,7 +26,7 @@
             }
           },
           "options": {
-           "assets": [
+            "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
@@ -58,13 +58,19 @@
       },
       "prefix": "app",
       "projectType": "application",
-      "root": "", 
+      "root": "",
       "sourceRoot": "src",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss",
+      "inlineStyle": true
     }
   },
   "version": 1
