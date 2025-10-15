@@ -85,6 +85,14 @@ export const appConfig: ApplicationConfig = {
                 >Operators</a
               >
             </li>
+            <li class="nav-item">
+              <a
+                routerLink="/signal-form"
+                routerLinkActive="active"
+                class="nav-link"
+                >Signal Form</a
+              >
+            </li>
           </ul>
         </nav>
         <div class="nav-toggle">

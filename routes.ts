@@ -71,6 +71,10 @@ export const routes: Routes = [
     loadComponent : () => import('./src/app/page/common-form/common-form').then((m) => m.CommonForm)
   },
   {
+    path: 'signal-form',
+    loadComponent : () => import('./src/app/page/signal-form/signal-form').then((m) => m.SignalForm)
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full',
