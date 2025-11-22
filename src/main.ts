@@ -18,6 +18,8 @@ import {
   withViewTransitions,
 } from "@angular/router";
 import { routes } from "../routes";
+import { SessionIdleMonitor } from "./app/service/session-idle-monitor/session-idle-monitor";
+import { IdleSession } from "./app/component/idle-session/idle-session";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -44,74 +46,15 @@ export const appConfig: ApplicationConfig = {
 @Component({
   selector: "app-root",
   imports: [RouterModule],
-  template: ` <header class="header-nav">
-      <div class="nav-container">
-        <div class="brand">
-          <a routerLink="/" class="brand-link">Angular Blog</a>
-        </div>
-        <nav class="nav-menu">
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a routerLink="/home" routerLinkActive="active" class="nav-link"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a routerLink="/login" routerLinkActive="active" class="nav-link"
-                >Login</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                routerLink="/dashboard"
-                routerLinkActive="active"
-                class="nav-link"
-                >Dashboard</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                routerLink="/animation"
-                routerLinkActive="active"
-                class="nav-link"
-                >Animation</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                routerLink="/operator"
-                routerLinkActive="active"
-                class="nav-link"
-                >Operators</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                routerLink="/signal-form"
-                routerLinkActive="active"
-                class="nav-link"
-                >Signal Form</a
-              >
-            </li>
-          </ul>
-        </nav>
-        <div class="nav-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </header>
-    <main class="main-content">
-      <div class="page-container">
-        <router-outlet></router-outlet>
-      </div>
-    </main>`,
+  template: ` 
+  <router-outlet></router-outlet>
+    `,
 })
 export class App {
   name = "Angular";
   private router = inject(Router);
   private history: string[] = [];
+  private sessionIdleMonitor = inject(SessionIdleMonitor);
 
   constructor() {
     effect(() => {

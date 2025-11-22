@@ -1,0 +1,18 @@
+@if ( idleSessionService.IDLESTATE() ) {
+<div class="idle-overlay">
+  
+  <div class="idle-popup-box">
+    <h3>Are you still there?</h3>
+    <p>
+      You've been idle for a while. You will be logged out automatically in
+      <strong>{{  idleSessionService.COUNTDOWN() }}</strong> seconds.
+    </p>
+    
+    <div class="idle-buttons">
+      <button (click)="logout()" class="btn-logout">Logout</button>
+      <button (click)="logout()" class="btn-stay">Stay Logged In</button>
+    </div>
+  </div>
+
+</div>
+}

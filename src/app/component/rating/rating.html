@@ -1,0 +1,15 @@
+<div class="star-rating-container">
+    @for ( star of starArray(); track $index) {
+    <mat-icon (click)="rate(star)" class="star-icon" [class.readonly]="readonly()" [class.error]="invalid()"
+        [class]="{'filled': star <= value()}">
+        {{ getStarIcon(star) }}
+    </mat-icon>
+    }
+    @if (errors().at(0)?.message) {
+    <mat-error>
+        {{
+        errors().at(0)?.message
+        }}
+    </mat-error>
+    }
+</div>

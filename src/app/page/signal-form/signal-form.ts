@@ -13,7 +13,10 @@ import {
   submit,
   TreeValidationResult,
   ValidationError,
+  min,
+  max,
 } from "@angular/forms/signals";
+import { Rating } from "../../component/rating/rating";
 
 export interface IRegisterForm {
   firstName: string;
@@ -21,6 +24,7 @@ export interface IRegisterForm {
   gender: string;
   dob: string;
   terms: boolean;
+  rating : number
 }
 
 export const customSchema: Schema<string> = schema((control) => {
@@ -33,7 +37,7 @@ export const customSchema: Schema<string> = schema((control) => {
 @Component({
   selector: "app-signal-form",
   standalone: true,
-  imports: [Control, CommonModule],
+  imports: [Control, CommonModule, Rating],
   template: `
     <div class="form-header">
       <h1>Registration Form using signals form</h1>
@@ -100,6 +104,11 @@ export const customSchema: Schema<string> = schema((control) => {
             <input [control]="registerForm.terms" type="checkbox" />
             Accept Terms
           </label>
+        </div>
+        <div class="form-field">
+          <app-rating [control]="registerForm.rating">
+
+          </app-rating>
         </div>
       </div>
       <div class="button-container">
@@ -183,6 +192,7 @@ export class SignalForm {
     maritalStatus: "",
     marriageDate: "",
     terms: false,
+    rating: 0
   });
 
   readonly registerForm = form(this.register, (path) => {
@@ -191,6 +201,7 @@ export class SignalForm {
         when: ({ valueOf }) => valueOf(path.maritalStatus) === "Married",
         message: "Marriage Date is required",
       });
+    max(path.rating,3,{ message : 'Should not exceed max value' })
   });
 
   submit(ev: Event) {
@@ -213,11 +224,8 @@ export class SignalForm {
 
   constructor() {
     effect(() => {
-      console.log(this.registerForm.firstName().value());
+      console.log('Rating Control Value : ',this.registerForm.rating().value());
     });
-
-    effect(() => {
-      console.log(this.registerForm.firstName().valid());
-    });
+ 
   }
 }

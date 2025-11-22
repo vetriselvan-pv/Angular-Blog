@@ -1,0 +1,81 @@
+
+Hey Devs 
+
+    After developing a library on top of angular i missed a simple design pattern for navigation. That after my entire project after 2 years. 
+Yeah devs ! navigation is a crucial part for the angular application. My entrire application is devloped and now i need to change the navigation after the form submitted 
+When i open the my code i know i scrabed the design . I hardcoded the navigation route on each form success callback. 
+
+What is best way to do?
+
+For these case we need to follow the design paterns.we need to seperate the complex of router outside the component. So i'm creating a service file which is singleton in nature and going to create a reusable method. The purpose of the service is hanlde the router navigation part inisde it. 
+
+
+Step 1 : 
+create a router serice to handle the navigation. I'm following the facde desig pattern to i name the service as routerFacadeService. 
+
+ng g s router-facade 
+
+Step 2 : 
+
+Now to hanlde the function provided by the angular router service we are going to provide the methods 
+
+import { Injectable } from '@angular/core';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root', // Make it a singleton service
+})
+export class RouterFacadeService {
+  constructor(private router: Router) {}
+
+  /**
+   * Navigates to a specified path.
+   * @param path The array of path segments.
+   * @param extras Optional configuration for the navigation.
+   */
+  public navigate(path: any[], extras?: NavigationExtras): Promise<boolean> {
+    const finalExtras = extras.replaceUrl ? extras : {...extras, replaceUrl : true}
+    return this.router.navigate(path, extras);
+  }
+
+  /**
+   * Navigates to a relative path from the current route.
+   * @param path The array of path segments.
+   * @param route The ActivatedRoute to base the relative navigation on.
+   * @param extras Optional configuration for the navigation.
+   */
+  public navigateRelativeTo(
+    path: any[],
+    route: ActivatedRoute,
+    extras?: Omit<NavigationExtras, 'relativeTo'>
+  ): Promise<boolean> {
+    const finalExtras: NavigationExtras = {
+      ...extras,
+      relativeTo: route,
+    };
+    return this.router.navigate(path, finalExtras);
+  }
+
+  /**
+   * Navigates to an absolute URL (useful for external links).
+   * @param url The external URL string.
+   */
+  public navigateByUrl(url: string): Promise<boolean> {
+    return this.router.navigateByUrl(url);
+  }
+
+  // --- Add application-specific methods here ---
+ 
+  /**
+   * Navigates to the application's dashboard.
+   * if you want to hanlde based on the logged in user or some other condition also. you can implemented in this service file and call it across the application
+   */
+  public goToDashboard(): Promise<boolean> {
+    return this.navigate(['/dashboard']);
+  }
+}
+
+
+provided the same method names like navigate and navigateByUrl will help you to unerstand the functionality handled in the service File. 
+In the navigate method i implements my project logic that is replaceURl option need to be true is the developer not specifed that while doing navigate action. 
+And same like application specific routes . You have done some action and need to route back to dashboard but based on the logic user your dashboard will route will chnage in that case also it is verymuch useful. 

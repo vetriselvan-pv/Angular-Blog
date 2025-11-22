@@ -1,0 +1,72 @@
+<header class="header-nav">
+      <div class="nav-container">
+        <div class="brand">
+          <a routerLink="/" class="brand-link">Angular Blog</a>
+        </div>
+        <nav class="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a routerLink="/home" routerLinkActive="active" class="nav-link"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a routerLink="/login" routerLinkActive="active" class="nav-link"
+                >Login</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                routerLink="/dashboard"
+                routerLinkActive="active"
+                class="nav-link"
+                >Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                routerLink="/animation"
+                routerLinkActive="active"
+                class="nav-link"
+                >Animation</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                routerLink="/operator"
+                routerLinkActive="active"
+                class="nav-link"
+                >Operators</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                routerLink="/signal-form"
+                routerLinkActive="active"
+                class="nav-link"
+                >Signal Form</a
+              >
+            </li>
+              <li class="nav-item">
+              <a
+                routerLink="/js-operator"
+                routerLinkActive="active"
+                class="nav-link"
+                >Js Operator</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="page-container">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+    <app-idle-session></app-idle-session>

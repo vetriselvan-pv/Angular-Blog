@@ -70,7 +70,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "style": "scss",
-      "inlineStyle": true
+      "inlineStyle": false
     }
   },
   "version": 1

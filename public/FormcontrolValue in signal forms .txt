@@ -1,0 +1,169 @@
+Hey devs 
+Angular recently change the mindset of the develoers to focus on the signals. On part of that they released the signals forms. unlike  reactive forms , signals forms are more easiler and easy to implement. 
+As we adapted to the reactive forms. I checking the each and every option in signals forms to make sure that it covers all the functionalities are not. 
+
+One of the major functionality in reative form is controlvalue accessor. In my experience in developing angular application. Most of the time creating a resuable control components. which brings single place to handle the design and logics based on the project need. Let's move into the topic. 
+How signals forms going to handle this requirement? 
+Same doubt i have but the FormValueControl interface make that job more easiler than the control value accessor. Yes, You don't need to implement the controlvalueAccessor and no need to provide also. 
+
+In your custom component just implement the interface FormValueControl. then you need to define the value variable in the ts file as model. 
+
+Hmmmmm thats it.:)
+
+To go pratically
+
+I'm going to develope the rating component. 
+
+ng g c rating 
+
+
+``` html
+<div class="star-rating-container">
+    @for ( star of starArray(); track $index) {
+    <mat-icon (click)="rate(star)" class="star-icon" [class.readonly]="readonly()" [class.error]="invalid()"
+        [class]="{'filled': star <= value()}">
+        {{ getStarIcon(star) }}
+    </mat-icon>
+    }
+    @if (errors().at(0)?.message) {
+    <mat-error>
+        {{
+        errors().at(0)?.message
+        }}
+    </mat-error>
+    }
+</div>
+```
+ 
+
+``` ts 
+export class Rating implements FormValueControl<number> {
+
+  readonly value= model<number>(0); 
+
+  readonly readonly = input<boolean>(false);
+
+  readonly invalid = input<boolean>(false);
+
+  readonly errors : InputSignal<readonly WithOptionalField<ValidationError>[]> = input<readonly WithOptionalField<ValidationError>[]>([])
+
+  starArray: Signal<number[]> = signal(Array(5).fill(0).map((x, i) => i + 1));
+
+    getStarIcon(index: number): string {
+    const floorRating = Math.floor(this.value());
+    const hasHalfStar = this.value() % 1 !== 0;
+
+    if (index <= floorRating) {
+      // Full star if the index is less than or equal to the whole rating
+      return 'star';
+    } else if (index === floorRating + 1 && hasHalfStar) {
+      // Half star if it's the next star and the rating has a decimal part
+      return 'star_half';
+    } else {
+      // Empty star (border) otherwise
+      return 'star_border';
+    }
+  }
+
+
+    rate(index: number): void {
+    if (!this.readonly()) {
+      this.value.set(index); 
+    }
+  }
+}
+
+```
+
+The rating is component is totaly custom one it doesn't have any input element. For that reason we manualy updating the model based on the user click (index of the star).
+
+No more boiler code like writevalue, setDisable and change , ontouch and all. 
+In the FormValueControl , The value is the only required property in this contract. A component that wants to integrate with the `Control` directive via this contract, *must* provide a `model()` that will be kept in sync with the value of the bound `Field`.
+
+If you check the FormValueControl internaly it extends the interface FormUIcontrol interface there other properties of the control is define. Which means if the disable property is needed you can implement in the control component. 
+Just by define it. 
+
+FormUiControl {
+    /**
+     * An input to receive the errors for the field. If implemented, the `Control` directive will
+     * automatically bind errors from the bound field to this input.
+     */
+    readonly errors?: InputSignal<readonly WithOptionalField<ValidationError>[]>;
+    /**
+     * An input to receive the disabled status for the field. If implemented, the `Control` directive
+     * will automatically bind the disabled status from the bound field to this input.
+     */
+    readonly disabled?: InputSignal<boolean>;
+    /**
+     * An input to receive the reasons for the disablement of the field. If implemented, the `Control`
+     * directive will automatically bind the disabled reason from the bound field to this input.
+     */
+    readonly disabledReasons?: InputSignal<readonly WithOptionalField<DisabledReason>[]>;
+    /**
+     * An input to receive the readonly status for the field. If implemented, the `Control` directive
+     * will automatically bind the readonly status from the bound field to this input.
+     */
+    readonly readonly?: InputSignal<boolean>;
+    /**
+     * An input to receive the hidden status for the field. If implemented, the `Control` directive
+     * will automatically bind the hidden status from the bound field to this input.
+     */
+    readonly hidden?: InputSignal<boolean>;
+    /**
+     * An input to receive the invalid status for the field. If implemented, the `Control` directive
+     * will automatically bind the invalid status from the bound field to this input.
+     */
+    readonly invalid?: InputSignal<boolean>;
+    /**
+     * An input to receive the pending status for the field. If implemented, the `Control` directive
+     * will automatically bind the pending status from the bound field to this input.
+     */
+    readonly pending?: InputSignal<boolean>;
+    /**
+     * An input to receive the touched status for the field. If implemented, the `Control` directive
+     * will automatically bind the touched status from the bound field to this input.
+     */
+    readonly touched?: ModelSignal<boolean> | InputSignal<boolean> | OutputRef<boolean>;
+    /**
+     * An input to receive the dirty status for the field. If implemented, the `Control` directive
+     * will automatically bind the dirty status from the bound field to this input.
+     */
+    readonly dirty?: InputSignal<boolean>;
+    /**
+     * An input to receive the name for the field. If implemented, the `Control` directive will
+     * automatically bind the name from the bound field to this input.
+     */
+    readonly name?: InputSignal<string>;
+    /**
+     * An input to receive the required status for the field. If implemented, the `Control` directive
+     * will automatically bind the required status from the bound field to this input.
+     */
+    readonly required?: InputSignal<boolean>;
+    /**
+     * An input to receive the min value for the field. If implemented, the `Control` directive will
+     * automatically bind the min value from the bound field to this input.
+     */
+    readonly min?: InputSignal<number | undefined>;
+    /**
+     * An input to receive the min length for the field. If implemented, the `Control` directive will
+     * automatically bind the min length from the bound field to this input.
+     */
+    readonly minLength?: InputSignal<number | undefined>;
+    /**
+     * An input to receive the max value for the field. If implemented, the `Control` directive will
+     * automatically bind the max value from the bound field to this input.
+     */
+    readonly max?: InputSignal<number | undefined>;
+    /**
+     * An input to receive the max length for the field. If implemented, the `Control` directive will
+     * automatically bind the max length from the bound field to this input.
+     */
+    readonly maxLength?: InputSignal<number | undefined>;
+    /**
+     * An input to receive the value patterns for the field. If implemented, the `Control` directive
+     * will automatically bind the value patterns from the bound field to this input.
+     */
+    readonly pattern?: InputSignal<readonly RegExp[]>;
+}
+
+You don't need to specificaly define that in the form html . 

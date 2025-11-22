@@ -1,0 +1,124 @@
+<div class="container">
+    <header class="header">
+        <h1>JavaScript Operators — Interactive Guide</h1>
+        <p class="subtitle">Try the examples below — change inputs and click <em>Run</em>.</p>
+    </header>
+
+    <section class="grid">
+        <!-- Arithmetic -->
+        <article class="card">
+            <h2>Arithmetic Operators</h2>
+            <div class="controls">
+                <input type="number" [control]="operatorForm.arithmeticA" placeholder="a">
+                <input type="number" [control]="operatorForm.arithmeticB" placeholder="b">
+                <select [control]="operatorForm.arithmeticOperator">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                    <option value="%">%</option>
+                    <option value="**">**</option>
+                </select>
+                <!-- <button (click)="runArithmetic()">Run</button> -->
+            </div>
+            <pre class="result">Result: {{arithResult()}}</pre>
+            <pre
+                class="code">// Example: {{this.operatorForm.arithmeticA().value()}} {{this.operatorForm.arithmeticOperator().value()}} {{this.operatorForm.arithmeticB().value()}} = {{arithResult()}}</pre>
+        </article>
+
+        <!-- Assignment (demo shows effect) -->
+        <!-- <article class="card">
+          <h2>Assignment Operators (demo)</h2>
+          <div class="controls">
+            <input type="number" [(ngModel)]="assignBase" placeholder="value">
+            <select [(ngModel)]="assignOp">
+              <option value="=">=</option>
+              <option value="+=">+=</option>
+              <option value="-=">-=</option>
+              <option value="*=">*=</option>
+              <option value="/=">/=</option>
+            </select>
+            <input type="number" [(ngModel)]="assignAmount" placeholder="amount">
+            <button (click)="runAssignment()">Apply</button>
+            <button (click)="resetAssignment()">Reset</button>
+          </div>
+          <pre class="result">Current value: {{assignCurrent}}</pre>
+          <pre class="code">// Shows how assignment operators modify the variable in-place</pre>
+        </article> -->
+
+        <!-- Comparison -->
+        <!-- <article class="card">
+          <h2>Comparison Operators</h2>
+          <div class="controls">
+            <input type="text" [(ngModel)]="cmpX" placeholder="x (string or number)">
+            <input type="text" [(ngModel)]="cmpY" placeholder="y (string or number)">
+            <select [(ngModel)]="cmpOp">
+              <option value="==">== (loose)</option>
+              <option value="===">=== (strict)</option>
+              <option value="!=">!=</option>
+              <option value="!==">!==</option>
+              <option value=">">&gt;</option>
+              <option value="<">&lt;</option>
+              <option value=">=">&gt;=</option>
+              <option value="<=">&lt;=</option>
+            </select>
+            <button (click)="runComparison()">Compare</button>
+          </div>
+          <pre class="result">Comparison: {{cmpResult}}</pre>
+          <pre class="note">Tip: Strict (===) compares type & value; loose (==) coerces types first.</pre>
+        </article> -->
+
+        <!-- Logical -->
+        <!-- <article class="card">
+          <h2>Logical Operators</h2>
+          <div class="controls">
+            <label><input type="checkbox" [(ngModel)]="logicA"> A (truthy)</label>
+            <label><input type="checkbox" [(ngModel)]="logicB"> B (truthy)</label>
+            <select [(ngModel)]="logicOp">
+              <option value="&&">AND (&&)</option>
+              <option value="||">OR (||)</option>
+              <option value="!">NOT (!) — uses A only</option>
+            </select>
+            <button (click)="runLogic()">Evaluate</button>
+          </div>
+          <pre class="result">Result: {{logicResult}}</pre>
+          <pre class="code">// NOTE: && and || return the actual operand (short-circuit), not just true/false.</pre>
+        </article> -->
+
+        <!-- Ternary -->
+        <!-- <article class="card">
+          <h2>Ternary Operator</h2>
+          <div class="controls">
+            <input type="number" [(ngModel)]="ternLeft" placeholder="left">
+            <input type="number" [(ngModel)]="ternRight" placeholder="right">
+            <button (click)="runTernary()">Evaluate</button>
+          </div>
+          <pre class="result">Expression: {{ternLeft}} &gt; {{ternRight}} ? 'left' : 'right' -> {{ternResult}}</pre>
+        </article> -->
+
+        <!-- Bitwise -->
+        <!-- <article class="card">
+          <h2>Bitwise Operators</h2>
+          <div class="controls">
+            <input type="number" [(ngModel)]="bitX" placeholder="x (int)">
+            <input type="number" [(ngModel)]="bitY" placeholder="y (int)">
+            <select [(ngModel)]="bitOp">
+              <option value="&">AND (&)</option>
+              <option value="|">OR (|)</option>
+              <option value="^">XOR (^)</option>
+              <option value="~">NOT (~) — uses x only</option>
+              <option value="<<">Left shift (<<)</option>
+              <option value=">>">Right shift (>>)</option>
+            </select>
+            <button (click)="runBitwise()">Run</button>
+          </div>
+          <pre class="result">Bitwise result: {{bitResult}}</pre>
+          <pre class="code">// Binary: {{bitXBinary}}  {{bitOp}}  {{bitYBinary}}</pre>
+        </article> -->
+    </section>
+
+    <footer class="footer">
+        <p>Note: This component uses <code>[control]</code>. Import <code>Control</code> in your Angular module to
+            enable signal forms.</p>
+    </footer>
+</div>
