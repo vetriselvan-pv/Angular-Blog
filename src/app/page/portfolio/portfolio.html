@@ -1,3 +1,89 @@
-<router-outlet>
-    
-</router-outlet>
+<div class="portfolio-wrapper">
+    <header class="vscode-header" role="banner" aria-label="Application header">
+        <div class="vscode-left">
+            <button class="icon-btn-action" aria-label="close" title="close">
+                <svg width="12px" height="12px" viewBox="0 0 16.00 16.00" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    stroke="#ff5f57" stroke-width="0.00016">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <circle cx="8" cy="8" r="8" fill="#fe6057"></circle>
+                    </g>
+                </svg>
+            </button>
+            <button class="icon-btn-action" aria-label="minimize" title="minimize">
+                 <svg width="12px" height="12px" viewBox="0 0 16.00 16.00" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    stroke="#febc2e" stroke-width="0.00016">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <circle cx="8" cy="8" r="8" fill="#febc2e"></circle>
+                    </g>
+                </svg>
+            </button>
+            <button (click)="screenMaximize()" class="icon-btn-action" aria-label="maximize" title="maximize">
+                 <svg width="12px" height="12px" viewBox="0 0 16.00 16.00" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    stroke="#28c840" stroke-width="0.00016">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <circle cx="8" cy="8" r="8" fill="#28c840"></circle>
+                    </g>
+                </svg>
+            </button>
+
+            <span class="brand">Vetriselvan</span>
+        </div>
+
+        <div class="vscode-center" role="navigation" aria-label="Tabs">
+            <button class="icon-btn tab-search" aria-label="Settings" title="Settings">
+                <svg width="12px" height="12px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    stroke="#fff">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <g id="Interface / Search_Magnifying_Glass">
+                            <path id="Vector"
+                                d="M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </g>
+                </svg>
+                Search...
+            </button>
+        </div>
+
+        <div class="vscode-right" aria-hidden="false">
+            <button class="icon-btn" aria-label="Settings" title="Settings">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 15.5A3.5 3.5 0 1 0 12 8.5a3.5 3.5 0 0 0 0 7z" stroke="currentColor" stroke-width="1.2"
+                        fill="none" />
+                    <path
+                        d="M19.4 15a1.7 1.7 0 0 0 .12 1.1l.9 1.5-1.7 1.7-1.5-.9a1.7 1.7 0 0 0-1.1.12l-1.1.6-.6-1.1a1.7 1.7 0 0 0-.12-1.1L9.6 15a1.7 1.7 0 0 0-1.1-.12L7 15.5 5.3 13.8l.9-1.5a1.7 1.7 0 0 0-.12-1.1L5.1 9.7 6.8 8l1.5.9c.35.2.75.26 1.1.12l1.1-.6.6 1.1c.16.32.42.58.74.74l2.1.9c.35.15.75.12 1.1-.12l1.5-.9L20.9 13l-1.5.9z"
+                        stroke="currentColor" stroke-width="0.9" fill="none" />
+                </svg>
+            </button>
+
+            <a routerLink="contact" class="avatar" title="Profile"></a>
+        </div>
+    </header>
+    <div class="home-container p-32 d-flex">
+        <nav id="primaryNav" class="nav" role="navigation" aria-label="Primary" aria-hidden="true">
+            <ul class="d-flex flex-align-center g-16 flex-direction-column flex-justify-center m-0 p-0">
+                @for (nav of navList(); track $index) {
+                <li class="list-style-none">
+                    <a tabindex="0" [routerLinkActive]="'active'" class="nav-link" [routerLink]="nav.link">
+                        {{
+                        nav.name
+                        }}
+                    </a>
+                </li>
+                }
+            </ul>
+        </nav>
+        <div class="router-container">
+            <router-outlet>
+            </router-outlet>
+        </div>
+    </div>
+</div>

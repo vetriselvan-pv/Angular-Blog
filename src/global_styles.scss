@@ -1,0 +1,25 @@
+html {
+  font-family: "SFMono-Regular", Menlo, Monaco, "Courier New", monospace;
+  --vscode-sidebar-background: #252526;
+  --vscode-foreground: #d4d4d4;
+  --vscode-foreground-muted: #c5c5c5;
+  --vscode-background: #1e1e1e;
+  --vscode-surface: rgba(255, 255, 255, 0.02);
+  --vscode-accent: #007acc;
+  --vscode-selection: #094771;
+  --vscode-tab-border: #252526;
+  background: var(--vscode-background);
+  color: var(--vscode-foreground);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--vscode-background);
+  color: var(--vscode-foreground);
+}
+
+* {
+  box-sizing: border-box;
+}

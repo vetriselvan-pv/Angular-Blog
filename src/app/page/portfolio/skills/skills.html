@@ -1,0 +1,18 @@
+<section>
+    <ul>
+        @for (skill of skills(); track $index) {
+            <li>
+                {{
+                    skill.skill
+                }}
+            </li>
+            @if (skill.subSkills.length) {
+                <ul>
+                    @for (subskill of skill.subSkills; track $index) {
+                        <li>{{ subskill }}</li>
+                    }
+                </ul>
+            }
+        }
+    </ul>
+</section>

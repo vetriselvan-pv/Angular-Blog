@@ -1,0 +1,11 @@
+  <div class="card-list">
+      @for (card of cards; track card.title; let i = $index) {
+      <div [animate.enter]="'card-fade-in-up'" [style.--i]="i" class="dashboard-card list-item">
+        <img [src]="card.image" alt="Card image" class="card-image" />
+        <div class="card-content">
+          <h3 [title]="card.title" >{{ card.title }}</h3>
+          <p>{{ card.description }}</p>
+        </div>
+      </div>
+      }
+    </div>

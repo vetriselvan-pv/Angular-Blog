@@ -1,0 +1,87 @@
+  $primary-dark: #6b9080ff;
+  $primary: #a4c3b2ff;
+  $primary-mild: #cce3deff;
+  $primary-mist: #eaf4f4ff;
+  $primary-light: #f6fff8ff;
+  $primaryText : #2A2A2A;
+  $primaryTextActive : #fff;
+
+  .d-flex {
+      display: flex;
+  }
+
+  .flex-align-center {
+      align-items: center;
+  }
+
+  .flex-justify-center {
+      justify-content: center;
+  }
+
+  .flex-direction-column {
+      flex-direction: column;
+  }
+
+  .g-16 {
+      gap: 16px;
+  }
+
+  .text-decoration-none {
+      text-decoration: none;
+  }
+
+  .list-style-none {
+      list-style: none;
+  }
+
+  .flex-justify-end {
+      justify-content: flex-end;
+  }
+
+  .mr-32 {
+      margin-right: 32px;
+  }
+
+  .ml-32 {
+      margin-left: 32px;
+  }
+
+  .flex-justify-between {
+      justify-content: space-between;
+  }
+
+  .title {
+      color: $primaryText;
+  }
+
+  .text-anchor {
+      color: $primaryText;
+  }
+
+  .text-anchor-active {
+      color: $primaryTextActive
+  }
+
+  .flex-direction-column {
+      flex-direction: column;
+  }
+
+  .p-32 {
+      padding: 32px;
+  }
+
+  .h-100 {
+      height: 100%;
+  }
+
+  .m-0{
+    margin: 0px;
+  }
+
+  .p-0{
+    padding: 0px;
+  }
+
+  .h-100{
+    height: 100%;
+  }

@@ -1,15 +1,46 @@
 /* Add application styles & imports to this file! */
+// @use '../public/theme/portfolio' as *;
 
-html, 
-body {
-  margin: 0;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  color: #2d3748;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+      --bg-1: #d7f1e6;
+      /* light mint */
+      --bg-2: #c3e6d9;
+      /* mid mint */
+      --accent: #193047;
+      /* deep slate accent */
+      --muted: #5f6b71;
+      --glass: rgba(255, 255, 255, 0.55);
+      --max-width: 1180px;
+      --radius: 12px;
+      --btn-radius: 10px;
+      --transition: 240ms cubic-bezier(.2, .9, .3, 1);
+      --container-padding: 28px;
+      --shadow-soft: 0 6px 20px rgba(14, 30, 37, 0.06);
+      --text-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+    *{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--text-sans);
+  color:var(--accent);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background: linear-gradient(180deg, var(--bg-2) 0%, rgba(235,245,240,0.6) 70%, #fbfdfb 100%);
 }
+
+
+// html, 
+// body {
+//   margin: 0;
+//   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+//   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+//   color: #2d3748;
+//   line-height: 1.6;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
 
 /* Modern Header Navigation Styles */
 .header-nav {

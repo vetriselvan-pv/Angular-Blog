@@ -1,14 +1,214 @@
-  $jungle-teal: #6b9080ff;
-  $muted-teal: #a4c3b2ff;
-  $frozen-water: #cce3deff;
-  $azure-mist: #eaf4f4ff;
-  $mint-cream: #f6fff8ff;
+/* container */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  color: var(--vscode-foreground);
+}
 
+/* === Hero section (VS Code-like dark theme) === */
+.hero {
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  padding-top: 92px;
+  padding-bottom: 64px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent);
+}
 
-  .home-container {
-      background: #A4C3B2FF;
-      background: linear-gradient(182deg, rgba(164, 195, 178, 1) 0%, rgba(246, 255, 248, 1) 100%);
-      height: 100%;
-      width: 100%;
-      overflow: auto;
+/* subtle decorative glow using theme-accent but very muted */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  opacity: 0.06;
+  transform: translateZ(0);
+  pointer-events: none;
+}
+
+.hero::before {
+  width: 520px;
+  height: 360px;
+  background: linear-gradient(135deg, rgba(0, 122, 204, 0.14), rgba(0, 0, 0, 0));
+  left: -8%;
+  top: 6%;
+}
+
+.hero::after {
+  width: 380px;
+  height: 300px;
+  background: linear-gradient(135deg, rgba(21, 21, 21, 0.6), rgba(255, 255, 255, 0.02));
+  right: -6%;
+  bottom: -6%;
+}
+
+/* grid layout */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+}
+
+/* left column: avatar / illustration */
+.hero-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  background-image: url(../../../../../public/profile-pic.png);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+  outline: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* right column: text */
+.hero-right {
+  width: 100%;
+  padding-right: 24px;
+}
+
+.hero-title {
+  margin: 0 0 12px 0;
+  font-size: clamp(28px, 3.4vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--vscode-accent);
+  font-weight: 800;
+  display: block;
+}
+
+.hero-title .accent {
+  color: var(--vscode-accent);
+}
+
+.hero-sub {
+  margin: 0 0 18px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--vscode-foreground-muted);
+  letter-spacing: 0.02em;
+}
+
+.hero-copy {
+  margin: 0 0 22px 0;
+  color: var(--vscode-foreground-muted);
+  font-size: clamp(14px, 1.6vw, 16px);
+  line-height: 1.6;
+  max-width: 640px;
+  font-style: normal;
+}
+
+/* CTAs styled like subtle VS Code UI buttons */
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  color: var(--vscode-foreground);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 160ms ease, box-shadow 160ms ease, transform 120ms ease;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.02);
+  transform: translateY(-2px);
+}
+
+/* primary uses accent */
+.btn-primary {
+  background: linear-gradient(180deg, var(--vscode-accent), color-mix(in srgb, var(--vscode-accent) 85%, black 15%));
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--vscode-accent);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(2px);
+}
+
+/* small screens: stack and reduce avatar */
+@media (max-width:900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: center;
   }
+
+  .hero-left {
+    order: 2;
+  }
+
+  .hero-right {
+    order: 1;
+    padding: 0;
+  }
+
+  .avatar {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+  }
+
+  .hero-copy {
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--vscode-foreground-muted);
+  }
+}
+
+/* animation: float */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* small utility: reduce hero height on very short viewports */
+@media (max-height:640px) {
+  .hero {
+    min-height: 70vh;
+    padding-top: 86px;
+    padding-bottom: 40px;
+  }
+}

@@ -1,0 +1,89 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-blog',
+  imports: [],
+  templateUrl: './blog.html',
+  styleUrl: './blog.scss'
+})
+export class Blog {
+ cards = [
+    {
+      id: 1,
+      title:
+        "Mastering Angular Pipes: Create Custom Pipes with @Pipe Decorator",
+      description:
+        "Learn how to use the @Pipe decorator in Angular to transform data, create custom pipes, and optimize performance with pure vs impure pipes.",
+      url: "https://medium.com/@vetriselvan_11/mastering-angular-pipes-create-custom-pipes-with-pipe-decorator-161b2e6695cf",
+      image: "./blog-image/Pipe Decorator.png",
+    },
+    {
+      id: 2,
+      title:
+        "Getting Started with Gemini CLI: Use Google Gemini Right from Your Terminal",
+      description:
+        "Learn how to install and use the Gemini CLI to run Google Gemini AI directly from your terminal. Step-by-step guide with setup and example.",
+      url: "https://medium.com/@vetriselvan_11/getting-started-with-gemini-cli-use-google-gemini-right-from-your-terminal-326bf5ddd4a4",
+      image: "./blog-image/Gemini CLI.png",
+    },
+    {
+      id: 3,
+      title:
+        "JavaScript Obfuscator — How to Obfuscate JavaScript in Angular for Better Frontend Security",
+      description:
+        "Learn to protect your Angular application by using JS obfuscation. Step-by-step guide to integrating Webpack Obfuscator .",
+      url: "https://medium.com/@vetriselvan_11/javascript-obfuscator-how-to-obfuscate-javascript-in-angular-for-better-frontend-security-00fa9fd1917e",
+      image: "./blog-image/JS Obfuscator.png",
+    },
+    {
+      id: 4,
+      title: "Understanding Void Subject in RxJS",
+      description:
+        "Learn how to use Subject<void> in RxJS to emit events without passing values. This guide covers Angular examples, common use cases.",
+      url: "https://medium.com/@vetriselvan_11/understanding-void-subject-in-rxjs-c3c17c245a36",
+      image: "./blog-image/Void Subject.png",
+    },
+    {
+      id: 5,
+      title: "Mastering AsyncSubject in RxJS: How to Emit the Final Value",
+      description:
+        "Discover how AsyncSubject in RxJS works, why it’s different from other Subjects, and when to use it. Learn through real Angular examples.",
+      url: "https://medium.com/@vetriselvan_11/mastering-asyncsubject-in-rxjs-how-to-emit-the-final-value-6156c79beff5",
+      image: "./blog-image/Async Subject.png",
+    },
+    {
+      id: 6,
+      title:
+        "Exploring ReplaySubject in RxJS: How to Replay Past Values in Angular",
+      description:
+        "Learn how to use ReplaySubject in RxJS to replay multiple emitted values to new subscribers in your Angular app. Step-by-step example",
+      url: "https://medium.com/@vetriselvan_11/exploring-replaysubject-in-rxjs-how-to-replay-past-values-in-angular-68fbde291e26",
+      image: "./blog-image/Reply Subject.png",
+    },
+    {
+      id: 7,
+      title: "RxJS : Understanding BehaviorSubject in Angular",
+      description:
+        "Learn how BehaviorSubject works under the hood and how to use it effectively in real-world Angular applications.",
+      url: "https://medium.com/@vetriselvan_11/rxjs-understanding-behaviorsubject-in-angular-6b249eda358d",
+      image: "./blog-image/behaviour subject.png",
+    },
+    {
+      id: 8,
+      title: "Exploring RxJS: Diving into Subjects with Interactive Demo",
+      description:
+        "Understanding RxJS Subjects: Multicasting, Observers, and Real-Time Angular Demos",
+      url: "https://medium.com/@vetriselvan_11/exploring-rxjs-diving-into-subjects-with-interactive-demo-98566cb8b3e3",
+      image: "./blog-image/rxjs_subject.png",
+    },
+    {
+      id: 9,
+      title:
+        "Understanding @let in Angular Template Syntax: A Powerful Tool for Local Variables",
+      description:
+        "Learn how to use @let in Angular templates to create local variables and simplify complex UI logic. Discover the benefits, syntax, and real-world examples .",
+      url: "https://medium.com/javascript-in-plain-english/understanding-let-in-angular-template-syntax-a-powerful-tool-for-local-variables-46cfeaaf3def",
+      image: "./blog-image/@let.png",
+    },
+  ];
+}
