@@ -1,9 +1,9 @@
 import { Component, computed, effect, OnInit, signal } from "@angular/core";
-import { Control, form } from "@angular/forms/signals";
+import {  Field, form } from "@angular/forms/signals";
 
 @Component({
   selector: "app-js-operator",
-  imports: [Control],
+  imports: [Field],
   templateUrl: "./js-operator.html",
   styles: `
   :host { display: block; font-family: Inter, Arial, sans-serif; color: #0f172a; }

@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-confirm-popup',
-  imports: [CommonModule],
+  imports: [],
   template: `
      <div class="confirm-popup">
       <h1>Confirm Popup</h1>

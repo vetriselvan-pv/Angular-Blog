@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, DOCUMENT, inject, OnInit, signal } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  DOCUMENT,
+  inject,
+  OnInit,
+  signal,
+} from "@angular/core";
 import {
   RouterOutlet,
   RouterLinkWithHref,
@@ -13,6 +20,7 @@ import {
 })
 export class Portfolio implements AfterViewInit {
   private document = inject(DOCUMENT);
+  mobileMenuOpen = signal<boolean>(false);
   navList = signal<
     Array<{
       name: string;
@@ -41,21 +49,29 @@ export class Portfolio implements AfterViewInit {
     },
   ]);
 
+
+
   ngAfterViewInit(): void {
-    this.screenMaximize();
+  
   }
 
   screenMaximize() {
     if (this.document && !this.document.fullscreenElement) {
       const elem: any = this.document.documentElement;
       if (elem.requestFullscreen) {
-        elem.requestFullscreen().catch((err:any) => console.error('Fullscreen error:', err));
+        elem
+          .requestFullscreen()
+          .catch((err: any) => console.error("Fullscreen error:", err));
       } else if (elem.webkitRequestFullscreen) {
         // Safari
-        elem.webkitRequestFullscreen().catch((err:any) => console.error('Fullscreen error:', err));
+        elem
+          .webkitRequestFullscreen()
+          .catch((err: any) => console.error("Fullscreen error:", err));
       } else if (elem.msRequestFullscreen) {
         // old IE/Edge
-        elem.msRequestFullscreen().catch((err:any) => console.error('Fullscreen error:', err));
+        elem
+          .msRequestFullscreen()
+          .catch((err: any) => console.error("Fullscreen error:", err));
       }
     } else if (this.document && this.document.fullscreenElement) {
       if (this.document.exitFullscreen) {

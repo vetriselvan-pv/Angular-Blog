@@ -1,13 +1,17 @@
 html {
-  font-family: "SFMono-Regular", Menlo, Monaco, "Courier New", monospace;
-  --vscode-sidebar-background: #252526;
-  --vscode-foreground: #d4d4d4;
-  --vscode-foreground-muted: #c5c5c5;
-  --vscode-background: #1e1e1e;
-  --vscode-surface: rgba(255, 255, 255, 0.02);
-  --vscode-accent: #007acc;
-  --vscode-selection: #094771;
-  --vscode-tab-border: #252526;
+  //  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Segoe UI Emoji", sans-serif;
+font-family: 'Outfit', sans-serif; 
+
+  /* Light portfolio theme */
+  --vscode-background: #f6f8fb;           /* page background */
+  --vscode-surface: #ffffff;              /* cards / panels */
+  --vscode-sidebar-background: #f3f4f6;   /* header/sidebar panels */
+  --vscode-foreground: #0f1724;           /* primary text */
+  --vscode-foreground-muted: #475569;     /* secondary text */
+  --vscode-accent: #0b5fff;               /* brand/accent (change if needed) */
+  --vscode-selection: #0b5fff;            /* selected row / highlight */
+  --vscode-tab-border: #e6edf6;           /* subtle borders */
+
   background: var(--vscode-background);
   color: var(--vscode-foreground);
 }

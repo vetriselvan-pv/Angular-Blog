@@ -1,111 +1,110 @@
- 
-/* panel */
-section {
-  background: var(--vscode-background);
+// ...existing code...
+/* Skills panel grid */
+.skills-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
   padding: 12px;
-  border-radius: 6px;
+  background: var(--vscode-background);
+}
+
+/* Individual skill card */
+.skill-card {
+  background: var(--vscode-surface, white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: 8px;
+  padding: 12px;
   box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset;
-  border: 1px solid rgba(255,255,255,0.02);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+  color: var(--vscode-foreground);
+  min-height: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* lists reset */
-section ul {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 8px;
+.skill-card:hover,
+.skill-card:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 
-/* top-level items */
-section > ul > li {
-  position: relative;
-  padding: 6px 8px;
-  margin: 6px 0;
-  border-radius: 4px;
+/* header row: name + optional level */
+.skill-head {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.skill-name {
+  font-size: 14px;
+  font-weight: 700;
   color: var(--vscode-foreground);
-  transition: background 120ms ease, color 120ms ease;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* hover like VS Code */
-section > ul > li:hover {
-  background: rgba(255,255,255,0.02);
-  cursor: default;
+/* level badge + bar */
+.skill-level {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 120px;
+  align-items: flex-end;
 }
 
-/* bullet / icon */
-section > ul > li::before {
-  content: "•";
-  color: color-mix(in srgb, var(--vscode-accent) 70%, white 30%);
+.level-label {
   font-size: 11px;
-  width: 12px;
-  display: inline-block;
-  text-align: center;
-  margin-right: 6px;
-  opacity: 0.95;
-}
-
-/* caret if has sublist (modern browsers) */
-section > ul > li:has(+ ul)::before {
-  content: "▸";
-  transform-origin: center;
-  transition: transform 120ms ease;
-}
-
-/* rotated caret when expanded via .open */
-section > ul > li.open::before {
-  content: "▾";
-}
-
-/* nested sublist */
-section ul ul {
-  margin-top: 6px;
-  margin-bottom: 4px;
-  padding-left: 12px;
-  border-left: 1px solid rgba(255,255,255,0.03);
-}
-
-/* subitems muted */
-section ul ul li {
-  font-size: 12px;
   color: var(--vscode-foreground-muted);
-  padding: 4px 8px;
-  margin: 4px 0;
-  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* progress bar */
+.level-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0,0,0,0.04);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.level-fill {
   display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--vscode-accent), color-mix(in srgb, var(--vscode-accent) 80%, black 20%));
+  border-radius: 999px;
+  transition: width 360ms cubic-bezier(.2,.9,.2,1);
 }
 
-/* subitem bullet */
-section ul ul li::before {
-  content: "·";
-  color: #6a9955;
-  font-size: 10px;
-  width: 12px;
-  display: inline-block;
-  text-align: center;
-  margin-right: 6px;
+/* subskill chips */
+.subskills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
 }
 
-/* active / selected */
-section ul li.active,
-section ul li.selected {
-  background: var(--vscode-selection);
-  color: #ffffff;
+.chip {
+  background: color-mix(in srgb, var(--vscode-surface) 70%, transparent);
+  border: 1px solid rgba(0,0,0,0.04);
+  color: var(--vscode-foreground-muted);
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
 }
 
-/* keyboard focus */
-section ul li:focus-within,
-section ul li:focus {
-  outline: 2px solid rgba(0,0,0,0.25);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--vscode-accent) 12%, transparent);
-}
-
-/* responsive */
-@media (max-width: 640px) {
-  section { padding: 8px; }
-  section > ul > li { font-size: 12px; padding: 6px 6px; }
-  section ul ul li { font-size: 11px; }
+/* responsive tweaks */
+@media (max-width: 520px) {
+  .skills-panel {
+    grid-template-columns: 1fr;
+  }
+  .skill-level { width: 100%; align-items: stretch; }
+  .level-label { text-align: right; }
 }
  // ...existing code...

@@ -6,119 +6,60 @@
   color: var(--vscode-foreground);
 }
 
-/* === Hero section (VS Code-like dark theme) === */
 .hero {
-  min-height: 82vh;
-  display: flex;
-  align-items: center;
-  padding-top: 92px;
-  padding-bottom: 64px;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent);
-}
-
-/* subtle decorative glow using theme-accent but very muted */
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(72px);
-  opacity: 0.06;
-  transform: translateZ(0);
-  pointer-events: none;
-}
-
-.hero::before {
-  width: 520px;
-  height: 360px;
-  background: linear-gradient(135deg, rgba(0, 122, 204, 0.14), rgba(0, 0, 0, 0));
-  left: -8%;
-  top: 6%;
-}
-
-.hero::after {
-  width: 380px;
-  height: 300px;
-  background: linear-gradient(135deg, rgba(21, 21, 21, 0.6), rgba(255, 255, 255, 0.02));
-  right: -6%;
-  bottom: -6%;
-}
-
-/* grid layout */
-.hero-grid {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 48px;
-  align-items: center;
-  width: 100%;
-}
-
-/* left column: avatar / illustration */
-.hero-left {
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 48px 16px;
+  background: transparent;
 }
 
-.avatar {
-  width: 300px;
-  height: 300px;
-  border-radius: 10px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.02);
-  background-image: url(../../../../../public/profile-pic.png);
-  background-size: cover;
-  background-position: top;
-  position: relative;
-  animation: float 6s ease-in-out infinite;
-  outline: 1px solid rgba(255, 255, 255, 0.02);
-}
 
-/* right column: text */
-.hero-right {
+/* grid layout */
+.hero-grid {
+  display: block;
   width: 100%;
-  padding-right: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-title,
+.hero-sub,
+.hero-copy {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .hero-title {
-  margin: 0 0 12px 0;
-  font-size: clamp(28px, 3.4vw, 36px);
+  margin-bottom: 8px;
+  font-size: clamp(24px, 3.6vw, 36px);
   line-height: 1.05;
-  letter-spacing: -0.02em;
   color: var(--vscode-accent);
   font-weight: 800;
-  display: block;
-}
-
-.hero-title .accent {
-  color: var(--vscode-accent);
 }
 
 .hero-sub {
-  margin: 0 0 18px 0;
+  margin-bottom: 12px;
   font-size: 14px;
   font-weight: 700;
   color: var(--vscode-foreground-muted);
-  letter-spacing: 0.02em;
 }
 
 .hero-copy {
-  margin: 0 0 22px 0;
+  margin-bottom: 18px;
   color: var(--vscode-foreground-muted);
-  font-size: clamp(14px, 1.6vw, 16px);
+  font-size: clamp(13px, 1.6vw, 16px);
   line-height: 1.6;
-  max-width: 640px;
-  font-style: normal;
+  max-width: 680px;
 }
 
-/* CTAs styled like subtle VS Code UI buttons */
+/* CTAs centered */
 .hero-ctas {
   display: flex;
   gap: 12px;
-  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -160,55 +101,105 @@
 }
 
 /* small screens: stack and reduce avatar */
-@media (max-width:900px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    text-align: center;
-  }
+@media (max-width: 900px) {
 
-  .hero-left {
-    order: 2;
-  }
-
-  .hero-right {
-    order: 1;
-    padding: 0;
-  }
-
-  .avatar {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-  }
-
-  .hero-copy {
-    margin-left: auto;
-    margin-right: auto;
-    color: var(--vscode-foreground-muted);
-  }
-}
-
-/* animation: float */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-/* small utility: reduce hero height on very short viewports */
-@media (max-height:640px) {
   .hero {
-    min-height: 70vh;
-    padding-top: 86px;
-    padding-bottom: 40px;
+    padding: 36px 12px;
+    min-height: 50vh;
+  }
+
+  .hero-title {
+    font-size: clamp(20px, 6vw, 30px);
+  }
+}
+
+@media (max-height: 640px) {
+  .hero {
+    min-height: 48vh;
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+}
+
+
+
+/* Circle container */
+.orbit {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: orbit-rotate 40s linear infinite;
+  /* slow rotation */
+}
+
+/* Base style for all doodles */
+.doodles-animation {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  opacity: 0.9;
+  animation: float 4s ease-in-out infinite alternate;
+  /* slow up/down */
+}
+
+/* Place each icon around the circle */
+.icon-1 {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon-2 {
+  top: 25%;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.icon-3 {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.icon-4 {
+  top: 25%;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.icon-5 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -200%);
+}
+
+.icon-6 {
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -100%);
+}
+
+/* Circular rotation of the whole group */
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Slow floating effect on each icon */
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-12px);
   }
 }

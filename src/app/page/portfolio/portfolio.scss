@@ -1,214 +1,15 @@
 .portfolio-wrapper {
     display: flex;
     flex-direction: column;
-}
-
-/* header bar */
-.vscode-header {
-    height: 36px;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    gap: 12px;
-    padding: 0 10px;
-    background: var(--vscode-sidebar-background);
-    color: var(--vscode-foreground);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02) inset;
-    user-select: none;
-}
-
-/* left, center, right layout */
-.vscode-left,
-.vscode-center,
-.vscode-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* left section */
-.vscode-left {
-    min-width: 160px;
-    gap: 8px;
-}
-
-.brand {
-    font-weight: 700;
-    font-size: 13px;
-    color: var(--vscode-foreground-muted);
-}
-
-/* center expands */
-.vscode-center {
-    flex: 1;
-    justify-content: center;
-    padding-left: 6px;
+    position: relative;
     overflow: hidden;
-
-    .tab-search {
-        width: 100%;
-        max-width: 420px;
-        padding: 4px 8px;
-        font-size: 13px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
-        background: var(--vscode-input-background);
-        color: var(--vscode-foreground);
-    }
 }
-
-/* tabs like VS Code */
-.tabs {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    height: 28px;
-    overflow: auto;
-}
-
-.tab {
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 13px;
-    color: var(--vscode-foreground-muted);
-    background: transparent;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: background 120ms ease, color 120ms ease;
-}
-
-.tab:hover,
-.tab:focus {
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--vscode-foreground);
-    outline: none;
-}
-
-.tab.active {
-    background: var(--vscode-selection);
-    color: #ffffff;
-    box-shadow: none;
-    border-left: 3px solid var(--vscode-accent);
-    padding-left: 8px;
-}
-
-/* right section */
-.vscode-right {
-    gap: 8px;
-}
-
-.icon-btn {
-    width: 32px;
-    height: 32px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    background: transparent;
-    color: var(--vscode-foreground-muted);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: background 120ms ease, color 120ms ease, transform 80ms ease;
-}
-
-.icon-btn-action {
-    width: 12px;
-    height: 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    background: transparent;
-    color: var(--vscode-foreground-muted);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: background 120ms ease, color 120ms ease, transform 80ms ease;
-}
-
-.icon-btn svg {
-    display: block;
-    color: inherit;
-    fill: currentColor;
-    stroke: currentColor;
-}
-
-.icon-btn:hover,
-.icon-btn:focus {
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--vscode-foreground);
-    outline: none;
-    transform: translateY(-1px);
-}
-
-/* avatar */
-.avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    background-image: url(../../../../public/profile-pic.png);
-    background-size: cover;
-    background-position: center;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02) inset;
-}
-
-/* accessibility focus */
-.icon-btn:focus,
-.tab:focus,
-.avatar:focus {
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--vscode-accent) 12%, transparent);
-}
-
-/* responsive */
-@media (max-width: 720px) {
-    .brand {
-        display: none;
-    }
-
-    .tabs .tab {
-        padding: 4px 8px;
-        font-size: 12px;
-    }
-
-    .vscode-left {
-        min-width: 88px;
-    }
-}
-
-// ...existing code...
-
-.home-container {
-    display: flex;
-    height: calc(100vh - 36px);
-    align-items: stretch;
-    gap: 0;
-}
-
-/* Sidebar (left, VS Code style) */
-header {
-    width: 72px;
-    background: var(--vscode-sidebar-background);
-    padding-top: 10px;
-    box-shadow: 1px 0 0 rgba(255, 255, 255, 0.02) inset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.header-inner {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
 
 #primaryNav {
-    margin-left: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 16px;
 }
 
 #primaryNav ul {
@@ -216,9 +17,8 @@ header {
     margin: 0;
     padding: 8px 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 16px;
 }
 
 /* Items */
@@ -233,7 +33,7 @@ header {
     align-items: center;
     justify-content: center;
     width: 48px;
-    height: 48px;
+    height: 32px;
     color: var(--vscode-foreground-muted);
     /* use muted text for icons/links */
     text-decoration: none;
@@ -247,7 +47,7 @@ header {
 /* Hover & focus */
 .nav-link:hover,
 .nav-link:focus {
-    background: #2a2d2e;
+    background: var(--vscode-tab-border);
     color: var(--vscode-foreground);
     outline: none;
     cursor: pointer;
@@ -309,4 +109,110 @@ header {
     .router-container {
         padding: 16px;
     }
+}
+
+
+/* mobile layout tweaks */
+
+/* Mobile floating hamburger button */
+.mobile-menu-btn { 
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 1200;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--vscode-accent);
+    color: #fff;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(11, 95, 255, 0.14), 0 2px 6px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 160ms ease, opacity 120ms ease;
+    display: inline-flex;
+}
+
+.mobile-menu-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Mobile nav bottom sheet */
+.mobile-nav {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: -100%;
+    z-index: 1100;
+    transition: bottom 260ms cubic-bezier(.2, .9, .2, 1), opacity 200ms ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mobile-nav.open {
+    bottom: 88px;
+    /* sits above the floating button */
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* inner panel */
+.mobile-nav-inner {
+    background: var(--vscode-surface);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 12px 40px rgba(2, 6, 23, 0.32);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    max-height: 56vh;
+    overflow: auto;
+}
+
+/* mobile links */
+.mobile-nav-inner ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mobile-nav-inner li {
+    margin: 6px 0;
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--vscode-foreground);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.mobile-nav-link:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* hide desktop primary nav on small screens and show mobile controls */
+@media (max-width: 720px) {
+    #primaryNav {
+        display: none !important;
+    }
+
+    .mobile-menu-btn {
+        display: inline-flex !important;
+    }
+}
+
+/* optional: hide mobile controls on larger screens */
+@media (min-width: 721px) {
+
+    .mobile-nav,
+    .mobile-menu-btn {
+        display: none !important;
+    }
+}
+
+/* ensure router container has enough bottom padding so content isn't obscured */
+.router-container {
+    padding-bottom: 110px;
 }

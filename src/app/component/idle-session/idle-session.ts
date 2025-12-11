@@ -1,10 +1,10 @@
-import { CommonModule } from "@angular/common";
+
 import { Component, inject } from "@angular/core";
 import { SessionIdleMonitor } from "../../service/session-idle-monitor/session-idle-monitor";
 
 @Component({
   selector: "app-idle-session",
-  imports: [CommonModule],
+  imports: [],
   templateUrl: "./idle-session.html",
   styles: `
   .idle-overlay {

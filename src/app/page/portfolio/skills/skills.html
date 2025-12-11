@@ -1,18 +1,34 @@
-<section>
-    <ul>
-        @for (skill of skills(); track $index) {
-            <li>
-                {{
-                    skill.skill
-                }}
-            </li>
-            @if (skill.subSkills.length) {
-                <ul>
-                    @for (subskill of skill.subSkills; track $index) {
-                        <li>{{ subskill }}</li>
-                    }
-                </ul>
+<section class="skills-panel">
+  @for (skill of skills(); track $index) {
+    <article class="skill-card" tabindex="0" aria-labelledby="skill-{{$index}}">
+      <header class="skill-head">
+        <h4 id="skill-{{$index}}" class="skill-name">{{ skill.skill }}</h4>
+
+        @if (  skill.levelPercent) {
+          <div class="skill-level" aria-hidden="false">
+            @if (skill.levelPercent) {
+              <span class="level-label">{{ skill.levelPercent }}</span>
             }
+            <div
+              class="level-bar"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="{{ skill.levelPercent || 0 }}"
+            >
+              <span class="level-fill" [style.width.%]="skill.levelPercent || 0"></span>
+            </div>
+          </div>
         }
-    </ul>
-</section>
+      </header>
+
+      @if (skill.subSkills.length) {
+        <div class="subskills" aria-hidden="false">
+          @for (subskill of skill.subSkills; track $index) {
+            <span class="chip">{{ subskill }}</span>
+          }
+        </div>
+      }
+    </article>
+  }
+</section> 

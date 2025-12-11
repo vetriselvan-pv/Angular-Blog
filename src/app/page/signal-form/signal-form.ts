@@ -1,8 +1,7 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule, JsonPipe } from "@angular/common";
 import { Component, effect, signal } from "@angular/core";
 import {
-  apply,
-  Control,
+  apply, 
   form,
   minLength,
   required,
@@ -15,6 +14,7 @@ import {
   ValidationError,
   min,
   max,
+  Field,
 } from "@angular/forms/signals";
 import { Rating } from "../../component/rating/rating";
 
@@ -37,7 +37,7 @@ export const customSchema: Schema<string> = schema((control) => {
 @Component({
   selector: "app-signal-form",
   standalone: true,
-  imports: [Control, CommonModule, Rating],
+  imports: [Field, Rating, JsonPipe],
   template: `
     <div class="form-header">
       <h1>Registration Form using signals form</h1>
@@ -46,7 +46,7 @@ export const customSchema: Schema<string> = schema((control) => {
       <div class="form-container">
         <div class="form-field">
           <label>First Name</label>
-          <input [control]="registerForm.firstName" type="text" />
+          <input [field]="registerForm.firstName" type="text" />
           @if(registerForm.firstName().errors()) { @for(error of
           registerForm.firstName().errors(); track error) {
           <!-- @if(error.kind === 'required'){
@@ -58,7 +58,7 @@ export const customSchema: Schema<string> = schema((control) => {
         </div>
         <div class="form-field">
           <label>Last Name</label>
-          <input [control]="registerForm.lastName" type="text" />
+          <input [field]="registerForm.lastName" type="text" />
           @if(registerForm.lastName().errors()) { @for(error of
           registerForm.lastName().errors(); track error) {
           <small class="error-message">{{ error.message }}</small>
@@ -66,7 +66,7 @@ export const customSchema: Schema<string> = schema((control) => {
         </div>
         <div class="form-field">
           <label>Gender</label>
-          <select [control]="registerForm.gender">
+          <select [field]="registerForm.gender">
             <option value="M">Male</option>
             <option value="F">Female</option>
             <option value="O">Other</option>
@@ -74,7 +74,7 @@ export const customSchema: Schema<string> = schema((control) => {
         </div>
         <div class="form-field">
           <label>Date of Birth</label>
-          <input [control]="registerForm.dob" type="date" />
+          <input [field]="registerForm.dob" type="date" />
           @if(registerForm.dob().errors()) { @for(error of
           registerForm.dob().errors(); track error) {
           <small class="error-message">{{ error.message }}</small>
@@ -82,7 +82,7 @@ export const customSchema: Schema<string> = schema((control) => {
         </div>
         <div class="form-field">
           <label>Marital Status</label>
-          <select [control]="registerForm.maritalStatus">
+          <select [field]="registerForm.maritalStatus">
             <option value="Single">Single</option>
             <option value="Married">Married</option>
           </select>
@@ -93,7 +93,7 @@ export const customSchema: Schema<string> = schema((control) => {
         </div>
         <div class="form-field">
           <label>Marriage Date</label>
-          <input [control]="registerForm.marriageDate" type="date" />
+          <input [field]="registerForm.marriageDate" type="date" />
           @if(registerForm.marriageDate().errors()) { @for(error of
           registerForm.marriageDate().errors(); track error) {
           <small class="error-message">{{ error.message }}</small>
@@ -101,12 +101,12 @@ export const customSchema: Schema<string> = schema((control) => {
         </div>
         <div class="form-field">
           <label>
-            <input [control]="registerForm.terms" type="checkbox" />
+            <input [field]="registerForm.terms" type="checkbox" />
             Accept Terms
           </label>
         </div>
         <div class="form-field">
-          <app-rating [control]="registerForm.rating">
+          <app-rating [field]="registerForm.rating">
 
           </app-rating>
         </div>

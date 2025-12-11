@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Router } from '@angular/router';
 import {
   FormBuilder,
@@ -11,7 +11,7 @@ import {
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule],
   template: `
     <div class="main-wrapper">
     <div class="form-container">

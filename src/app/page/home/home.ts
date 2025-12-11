@@ -1,10 +1,4 @@
-import {
-  CommonModule,
-  formatCurrency,
-  formatDate,
-  formatNumber,
-  formatPercent,
-} from "@angular/common";
+import { formatCurrency, formatDate, formatNumber, formatPercent } from "@angular/common";
 import {
   Component,
   effect,
@@ -18,7 +12,7 @@ import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule],
   template: `
     <div class="welcome-section">
       <div class="hero-content">

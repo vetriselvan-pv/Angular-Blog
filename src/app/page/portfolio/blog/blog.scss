@@ -2,7 +2,7 @@
 /* layout */
 .card-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 18px;
   align-items: start;
   padding: 8px 0;
@@ -26,6 +26,7 @@
   /* staggered entrance */
   animation: card-fade-in-up 1000ms cubic-bezier(.2,.9,.2,1) both;
   animation-delay: calc(var(--i, 0) * 40ms);
+  height: 150px;
 }
 
 /* hover / focus */

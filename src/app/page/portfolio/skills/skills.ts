@@ -17,6 +17,7 @@ export class Skills {
           "HTML5 – Semantic structure, accessibility best practices, responsive markup.",
           "CSS3 – Modern layouts using Flexbox & Grid, animations, custom properties, responsive and mobile-first design.",
         ],
+        levelPercent: 90,
       },
       {
         skill: "Mobile App Development",
@@ -24,6 +25,7 @@ export class Skills {
           "Ionic Framework – Hybrid mobile app development, UI components, navigation patterns, theming, forms, and Angular integration.",
           "Capacitor – Native runtime for accessing device functionalities (Camera, Filesystem, Geolocation), plugin development, platform builds (iOS/Android).",
         ],
+        levelPercent: 80,
       },
       {
         skill: "Cross-Platform & UI/UX",
@@ -32,6 +34,7 @@ export class Skills {
           "Reusable component creation",
           "Performance optimization for web and mobile apps",
         ],
+        levelPercent: 85,
       },
       {
         skill: "Additional Skills",
@@ -41,6 +44,7 @@ export class Skills {
           "Debugging and troubleshooting",
           "Agile development practices",
         ],
+        levelPercent: 75,
       },
     ]);
 }

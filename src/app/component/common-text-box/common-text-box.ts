@@ -16,7 +16,7 @@ import {
   NG_VALUE_ACCESSOR,
   Validators,
 } from "@angular/forms";
-import { CommonModule } from "@angular/common";
+
 import { startWith } from "rxjs";
 
 @Component({
@@ -120,7 +120,7 @@ import { startWith } from "rxjs";
     }
     .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; overflow: hidden; clip: rect(0 0 0 0); }
   `,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
